@@ -15,7 +15,7 @@ var dexEntries = require("./assets/flavorText.json");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var gis = require('g-i-s');
 var client = new Discord1.Client();
-client.login("NzA4MTU3MjMyNjY3Mjk1NzU0.XrdlZA.NSSnlJiO6i90QKJ0851tt6q_Q5I");
+client.login("Your Token Here");
 var dex;
 
 function logResults(error, results) {
