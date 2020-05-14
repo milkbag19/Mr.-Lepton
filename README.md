@@ -77,3 +77,13 @@ Yes! simply type >weather [name of location]
 
 ![Mr. Lepton](https://i.imgur.com/hNpYAbc.gif)
 
+# Image Searching
+
+## Why would I need this?
+
+Whenever you are in need of a quick image from the web, just lookup the search term with Mr. Lepton, and he will serve relavant results from google!
+
+### Watch below on how to use this feature. 
+
+
+![Mr. Lepton](https://i.imgur.com/aJOPu0B.gif)
