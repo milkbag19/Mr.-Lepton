@@ -1,4 +1,4 @@
-# Mr.-Lepton
+# Mr.Lepton
 
 ![Mr. Lepton](https://i.imgur.com/OQEPxxU.png)
 
@@ -7,6 +7,6 @@ Mr. Lepton is a Discord bot aimed to be user friendly, and packed with features.
 Mr. Lepton has many features and commands, such as :
 
 
-#Pokedex 
+# Pokedex 
 
 ![Mr. Lepton](https://i.imgur.com/SYBubKN.gif)
