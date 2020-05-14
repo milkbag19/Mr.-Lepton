@@ -61,3 +61,14 @@ These features were intalled into Mr. Lepton's programming for whenever you are 
 ## Watch the video below on how to use this feature.
 
 ![Mr. Lepton](https://i.imgur.com/JjgRVcn.gif)
+
+# Weather Report
+
+## Can I do this from any location?
+
+Yes! simply type >weather [name of location]
+
+### Just like this!
+
+![Mr. Lepton](https://i.imgur.com/hNpYAbc.gif)
+
