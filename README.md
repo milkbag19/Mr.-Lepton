@@ -50,7 +50,7 @@ Please watch the video below.
 
 ![Mr. Lepton](https://i.imgur.com/SYBubKN.gif)
 
-#Dicerolls and Rock, Paper, Scissors
+# Dicerolls and Rock, Paper, Scissors
 
 These features were intalled into Mr. Lepton's programming for whenever you are bored, and want to play a simple, fun game with the guys/girls.
 
