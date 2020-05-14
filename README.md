@@ -6,6 +6,9 @@ Mr. Lepton is a Discord bot aimed to be user friendly, and packed with features.
 
 Mr. Lepton has many features and commands, such as :
 
+# help
+Simply type >help and a useful list of commands will be sent.
+
 # ~ **_Economy_** ~
 
 ## Experience 
