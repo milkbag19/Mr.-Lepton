@@ -37,9 +37,17 @@ Find out on the next episode of Mr. Lepton steals your money in a legal manner!
 ### Viewing your stats/profile
 
 ![Mr. Lepton](https://i.imgur.com/zTIQd77.gif)
-\n\n\n\n
+
 # Pokedex 
+
+## What does it do?
+
+The Pokedex Mr. Lepton is equiped with was designed to be extremely userfriendly, and proved all the information you could need on any pokemon you can think of!
+
+## How do I use the Pokedex?
+
+Please watch the video below.
 
 ![Mr. Lepton](https://i.imgur.com/SYBubKN.gif)
 
-#
+
