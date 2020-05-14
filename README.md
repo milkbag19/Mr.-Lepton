@@ -37,13 +37,7 @@ Find out on the next episode of Mr. Lepton steals your money in a legal manner!
 ### Viewing your stats/profile
 
 ![Mr. Lepton](https://i.imgur.com/zTIQd77.gif)
-_
-_
-_
-_
-_
-_
-_
+\n\n\n\n
 # Pokedex 
 
 ![Mr. Lepton](https://i.imgur.com/SYBubKN.gif)
