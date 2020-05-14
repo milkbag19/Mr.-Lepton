@@ -10,6 +10,8 @@ Mr. Lepton has many features and commands, such as :
 
 Simply type >help and a useful list of commands will be sent.
 
+![Mr. Lepton](https://i.imgur.com/E1SeOSE.gif)
+
 # ~ **_Economy_** ~
 
 ## Experience 
@@ -37,6 +39,9 @@ The main purpose of gambling is to allow users to gather coins faster, but at th
 Will you become a coin millionare? or will you become homeless from you gambling addiction?  
 
 Find out on the next episode of Mr. Lepton steals your money in a legal manner!
+
+![Mr. Lepton](https://i.imgur.com/bYAXmQg.gif)
+
 
 ### Viewing your stats/profile
 
