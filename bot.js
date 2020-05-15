@@ -15,8 +15,9 @@ var dexEntries = require("./assets/flavorText.json");
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var gis = require('g-i-s');
 var client = new Discord1.Client();
-client.login("Your Token Here");
+client.login("NzA4MTU3MjMyNjY3Mjk1NzU0.XrzsCQ.b65fHJiuyFs1ZrqSPnYmdbBEeOk");
 var dex;
+var covid;
 
 function logResults(error, results) {
 	if (error) {
@@ -26,6 +27,11 @@ function logResults(error, results) {
 		console.log(JSON.stringify(results, null, '  '));
 	}
 }
+
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function imageExists(image_url){
 	var http = new XMLHttpRequest();
 	http.open('HEAD', image_url, false);
@@ -38,6 +44,7 @@ function imageExists(image_url){
 		return true;
 	}
 }
+
 request('https://raw.githubusercontent.com/Zarel/Pokemon-Showdown/master/data/pokedex.js', (err, res, body) => {
 	if (!err && res.statusCode == 200) {
 		dex = requireFromUrl('https://raw.githubusercontent.com/Zarel/Pokemon-Showdown/master/data/pokedex.js').BattlePokedex;
@@ -207,7 +214,7 @@ client.on("message", (message) => {
 					console.log(url);
 			});
 		}else{
-			message.channel.send("**Search query was empy.  Please retry.**");
+			message.channel.send("**Search query was empty.  Please retry.**");
 
 		}
 	}else if(args[0] == ">poke") {
@@ -244,8 +251,8 @@ client.on("message", (message) => {
 
 
 			var foot = {
-				text: 'Created by : Milkbag19',
-				icon_url: 'https://isaiahcalc.com'
+				text: 'Github : https://github.com/milkbag19/Mr.-Lepton',
+				icon_url: 'https://i.imgur.com/XyikPAg.jpg'
 
 			};
 			var abilityString = pokeEntry.abilities[0];
@@ -335,7 +342,138 @@ client.on("message", (message) => {
 				message.channel.send("⚠ Pokemon not found in database!\n\n! NOTE - Gen 8 Pokemon have not been added to the database !").catch(console.error);
 			}
 		}catch(error){console.error(error);}
-		}
+		}else if(args[0] == ">covid"){
+		let options = {json: true};
+
+
+		request('https://api.covid19api.com/summary',options, (err, res, body) => {
+
+
+			if (!err) {
+				if (res.statusCode == 200) {
+					if (args[1] != null || args[1] != "" && typeof args[1] !== 'undefined') {
+						if(args[1] == "global"){
+							var foot = {
+								text: 'Source : https://covid19api.com/#details',
+								icon_url: 'https://covid19api.com/logo-color-sm.png'
+
+							};
+							var covidEmbed = {
+								title: "Global Stats",
+								color: 0x00AE86,
+								image: {
+									url: "https://i.redd.it/jdix6i0lsyny.png",
+									width: 80
+								},
+								fields: [
+									{
+										"name": "Total Cases",
+										"value": "" + numberWithCommas(body.Global.TotalConfirmed),
+										"inline": true
+									},
+									{
+										"name": "Total Deaths",
+										"value": "" + numberWithCommas(body.Global.TotalDeaths),
+										"inline": true
+									},
+									{
+										"name": "Confirmed Cases Today",
+										"value": "" + numberWithCommas(body.Global.NewConfirmed)
+
+									},
+									{
+										"name": "Confirmed Deaths Today",
+										"value": "" + numberWithCommas(body.Global.NewDeaths),
+										"inline": true
+									},
+									{
+										"name": "Total Recovered",
+										"value": "" + numberWithCommas(body.Global.TotalRecovered)
+									},
+									{
+										"name": "Recovered Today",
+										"value": "" + numberWithCommas(body.Global.NewRecovered),
+										"inline": true
+									}
+								],
+								footer: foot
+							};
+
+							message.channel.send("Serving Data Sir.", {embed: covidEmbed});
+						}else {
+							var input = args[1].toLowerCase();
+							var covid = body.Countries.filter(function (item) {
+								return item.Slug == input;
+							});
+							if (covid[0] != null) {
+								var imageURL = "https://www.countryflags.io/" + covid[0].CountryCode + "/flat/64.png";
+								var foot = {
+									text: 'Source : https://covid19api.com/#details',
+									icon_url: 'https://covid19api.com/logo-color-sm.png'
+
+								};
+								var covidEmbed = {
+									title: "Stats for " + covid[0].Country,
+									color: 0x00AE86,
+									image: {
+										url: imageURL,
+
+										width: 80
+									},
+									fields: [
+										{
+											"name": "Total Cases",
+											"value": "" + numberWithCommas(covid[0].TotalConfirmed),
+											"inline": true
+										},
+										{
+											"name": "Total Deaths",
+											"value": "" + numberWithCommas(covid[0].TotalDeaths),
+											"inline": true
+										},
+										{
+											"name": "Confirmed Cases Today",
+											"value": "" + numberWithCommas(covid[0].NewConfirmed)
+
+										},
+										{
+											"name": "Confirmed Deaths Today",
+											"value": "" + numberWithCommas(covid[0].NewDeaths),
+											"inline": true
+										},
+										{
+											"name": "Total Recovered",
+											"value": "" + numberWithCommas(covid[0].TotalRecovered)
+										},
+										{
+											"name": "Recovered Today",
+											"value": "" + numberWithCommas(covid[0].NewRecovered),
+											"inline": true
+										}
+									],
+									footer: foot
+								};
+
+								message.channel.send("Serving Data Sir.", {embed: covidEmbed});
+							}
+						}
+						} else {
+							message.channel.send(":warning: Please select a country or global :warning:");
+						}
+					}else {
+					message.channel.send(":warning: Please select a country or global :warning:");
+				}
+
+
+			}else{
+					message.channel.send(":warning: API for data not responding.  Please Contact @Milkbag2761 :warning: ");
+				}
+
+		});
+	}
+
+
+
 
 });
 				/* *************************** */
@@ -744,6 +882,11 @@ bot.on('message', function (user, userID, channelID, messages, evt) {
 						title: 'Helpful List of Commands',
 						url: '',
 						"fields": [
+							{
+								"name": ":microscope:Covid-19 stats by country",
+								"value": ">covid [country name]",
+								"inline": true
+							},
 							{
 								"name": ":mag:Images Search",
 								"value": ">search [search term]",
