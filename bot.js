@@ -2,27 +2,27 @@
 /* Imports for the main file */
 
 /********************************************///
-var Discord1 = require('discord.js');		 ///
-var logger = require('winston');			 ///
-var commands = require('./src/commands.js')	 ///
-var mysql = require('mysql');				 ///
-var constants = require("./constant")		 ///
-var con = mysql.createConnection({			 ///
-	host: constants.HOST,					 ///
-	user: constants.USERNAME,				 ///
-	database: constants.DATABASE,			 ///
-	password: constants.PASSWORD			 ///
-});											 ///
-const { Player } = require("discord-player");///
+var Discord1 = require('discord.js');		 
+var logger = require('winston');			 
+var commands = require('./src/commands.js')	 
+var mysql = require('mysql');				 
+var constants = require("./constant")		 
+var con = mysql.createConnection({			 
+	host: constants.HOST,					 
+	user: constants.USERNAME,				 
+	database: constants.DATABASE,			 
+	password: constants.PASSWORD			 
+});											 
+const { Player } = require("discord-player");
 const { isNullOrUndefined } = require('util');
 let timeoutID;
 /********************************************///
 
 /* Important config settings */
 
-/*****************************************************************************///
-//Discord API logon and init												  ///
-var client = new Discord1.Client();											  ///
+/********************************************///
+//Discord API logon and init												  
+var client = new Discord1.Client();											  
 client.login("");  ///
 const player = new Player(client);
 
@@ -38,32 +38,31 @@ client.on('ready', () => {
     client.user.setActivity('>help', { type: 'PLAYING' });
 });
 client.player = player;
-//SQL Database connection and renewal										  ///
 client.player.on('trackStart', (message, track) =>
 	message.channel.send(":musical_note: **Now playing : **  ``"+track.title+"!``",
+	{
+		embed:
 		{
-			embed:
+			title: track.title,
+			url: track.url,
+			image: {
+				url: track.thumbnail,
+				width: 360,
+				height: 202
+			},
+			fields: [
 			{
-				title: track.title,
-				url: track.url,
-				image: {
-							url: track.thumbnail,
-							width: 360,
-							height: 202
-				},
-				fields: [
-					{
-						name: "Duration : ",
-						value: track.duration,
-						"inline": true
-					},
-					{
-						name: "Requested By : ",
-						value : track.requestedBy
-					}
-				]
+				name: "Duration : ",
+				value: track.duration,
+				"inline": true
+			},
+			{
+				name: "Requested By : ",
+				value : track.requestedBy
 			}
-		})
+			]
+		}
+	})
 )
 	.on('trackAdd', (message, queue, track) => message.channel.send(`**${track.title}** has been added to the queue!`))
 	.on('error', (error, message) => {
@@ -86,8 +85,6 @@ client.player.on('trackStart', (message, track) =>
 	})
 	.on('channelEmpty', (message, queue) => {
 		timeoutID = setTimeout(() => {
-  		// This will run if the timeout reaches its end
-  		// You can adapt the code above to disconnect from the voice channel
 		}, 15 * 60 * 1000)
 		message.channel.send('Music stopped as there is no more member in the voice channel!')
 
@@ -95,27 +92,25 @@ client.player.on('trackStart', (message, track) =>
 	.on('noResults', (message, query) => {message.channel.send(`No results found on YouTube for ${query}!`)})
 	.on('queueEnd', (message, queue) => {
 		timeoutID = setTimeout(() => {
-  		// This will run if the timeout reaches its end
-  		// You can adapt the code above to disconnect from the voice channel
 		}, 15 * 60 * 1000)
 		message.channel.send('Music stopped as there is no more music in the queue!')
 	})
 
 
-con.connect(function(err) {													  ///
-	if (err) throw err;														  ///
-	console.log("Connected to Database!");									  ///
-}); 																		  ///
-setInterval(function () {													  ///
-	con.query('SELECT 1');													  ///
-}, 5000);																	  ///
-// Configure logger settings												  ///
-logger.remove(logger.transports.Console);									  ///
-logger.add(new logger.transports.Console, {									  ///
-	colorize: true															  ///
-});																			  ///
-logger.level = 'debug';														  ///
-/*****************************************************************************///
+con.connect(function(err) {													 
+	if (err) throw err;														  
+	console.log("Connected to Database!");									  
+}); 																		  
+setInterval(function () {													  
+	con.query('SELECT 1');													  
+}, 5000);																	  
+// Configure logger settings												  
+logger.remove(logger.transports.Console);									  
+logger.add(new logger.transports.Console, {									  
+	colorize: true															  
+});																			  
+logger.level = 'debug';														  
+/********************************************///
 
 /* Main bot listener */
 client.on("message", async (message) => {
