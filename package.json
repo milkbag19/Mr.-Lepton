@@ -15,7 +15,7 @@
     "good-news": "^1.0.0",
     "google": "^2.1.0",
     "merge-options": "^3.0.4",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
     "opusscript": "0.0.7",
